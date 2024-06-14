@@ -86,5 +86,5 @@ for i in range(500):
     text = response.choices[0].text
     # print(text)
 
-    with open("data_generated_10.txt", "a", encoding="utf-8") as file:
+    with open(r"raw data/data_generated_11.txt", "a", encoding="utf-8") as file:
         file.write(text)
