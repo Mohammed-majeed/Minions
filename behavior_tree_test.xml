@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Selector>
+                <Sequence>
+                    <Action>form_line</Action>
+                    <Condition>target_detected</Condition>
+                    <Action>change_color</Action>
+                </Sequence>
+
+            </Selector>

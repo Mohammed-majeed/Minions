@@ -1,0 +1,262 @@
+[
+  {
+    "id": "seed_task_1",
+    "USER COMMAND": "generate behavior tree to 'Find the target and change color to green, then return home and change color to white.'Output only the XML behavior tree without extra text.",
+    "INSTRUCTIONS": {
+      "Use only the following behaviors": {
+        "agent_movement_freeze": "Action: Freeze agent's movement. Always returns True.",
+        "avoid_obstacle": "Action: Avoid detected obstacles. Always returns True.",
+        "change_color_to_green": "Action: Change agent's color to green. Always returns True.",
+        "change_color_to_white": "Action: Change agent's color to white. Always returns True.",
+        "continue_movement_agent": "Action: Continue agent's movement. Always returns True.",
+        "form_line": "Action: Form a vertical line at the center. Always returns True.",
+        "is_agent_in_nest": "Condition: Check if the agent is in the nest. Returns True if the agent is in the nest, False otherwise.",
+        "is_line_formed": "Condition: Check if a vertical line is formed. Returns True if the line is formed with the center, False otherwise.",
+        "is_obstacle_detected": "Condition: Check for obstacles nearby. Returns True if an obstacle is detected, False otherwise.",
+        "is_target_detected": "Condition: Check if target is within 20 units. Returns True if the target is within 20 units of distance, False otherwise.",
+        "is_target_reached": "Condition: Check if target is within 15 units. Returns True if the target is within 15 units of distance, False otherwise.",       
+        "task_completed": "Action: Signal task completion by freezing movement. Always returns True.",
+        "wander": "Action: Move randomly within the environment. Always returns True."
+      },
+      "to construct behavior tree in XML format to the following command": "if the available behaviors do not fit with the user command say (Sorry, I can't do the task)"
+    },
+    "OUTPUT": "<BehaviorTree><Sequence><Selector><Sequence><Condition>is_target_detected</Condition><Action>change_color_to_green</Action><Action>task_completed</Action></Sequence><Action>wander</Action></Selector><Sequence><Condition>is_agent_in_nest</Condition><Action>change_color_to_white</Action></Sequence></Sequence></BehaviorTree>"
+  },
+  {
+    "id": "seed_task_2",
+    "USER COMMAND": "generate behavior tree to 'Find food and change color to green, then return to the nest, change color to white, and freeze movement.'Output only the XML behavior tree without extra text.",
+    "INSTRUCTIONS": {
+      "Use only the following behaviors": {
+        "agent_movement_freeze": "Action: Freeze agent's movement. Always returns True.",
+        "change_color_to_green": "Action: Change agent's color to green. Always returns True.",
+        "change_color_to_white": "Action: Change agent's color to white. Always returns True.",
+        "form_line": "Action: Form a vertical line at the center. Always returns True.",
+        "is_agent_in_nest": "Condition: Check if the agent is in the nest. Returns True if the agent is in the nest, False otherwise.",
+        "is_line_formed": "Condition: Check if a vertical line is formed. Returns True if the line is formed with the center, False otherwise.",
+        "is_obstacle_detected": "Condition: Check for obstacles nearby. Returns True if an obstacle is detected, False otherwise.",
+        "is_path_clear": "Condition: Check if path ahead is clear. Returns True if no obstacles are detected ahead, False if obstacles are present.",
+        "is_target_detected": "Condition: Check if target is within 20 units. Returns True if the target is within 20 units of distance, False otherwise.",
+        "is_target_reached": "Condition: Check if target is within 15 units. Returns True if the target is within 15 units of distance, False otherwise.",       
+        "task_completed": "Action: Signal task completion by freezing movement. Always returns True.",
+        "wander": "Action: Move randomly within the environment. Always returns True."
+      },
+      "to construct behavior tree in XML format to the following command": "if the available behaviors do not fit with the user command say (Sorry, I can't do the task)"
+    },
+    "OUTPUT": "<BehaviorTree> <Sequence> <Selector> <Sequence> <Condition>is_target_detected</Condition> <Action>change_color_to_green</Action> <Action>task_completed</Action> </Sequence> <Action>wander</Action> </Selector> <Sequence><Condition>is_agent_in_nest</Condition> <Action>change_color_to_white</Action> <Action>agent_movement_freeze</Action> </Sequence> </Sequence> </BehaviorTree>"
+  },
+  {
+    "id": "seed_task_3",
+    "USER COMMAND": "generate behavior tree to 'Detect an obstacle, change color to green, try to find the goal, then change color to white.'Output only the XML behavior tree without extra text.",
+    "INSTRUCTIONS": {
+      "Use only the following behaviors": {
+        "avoid_obstacle": "Action: Avoid detected obstacles. Always returns True.",
+        "change_color_to_green": "Action: Change agent's color to green. Always returns True.",
+        "change_color_to_white": "Action: Change agent's color to white. Always returns True.",
+        "continue_movement_agent": "Action: Continue agent's movement. Always returns True.",
+        "form_line": "Action: Form a vertical line at the center. Always returns True.",
+        "is_line_formed": "Condition: Check if a vertical line is formed. Returns True if the line is formed with the center, False otherwise.",
+        "is_obstacle_detected": "Condition: Check for obstacles nearby. Returns True if an obstacle is detected, False otherwise.",
+        "is_path_clear": "Condition: Check if path ahead is clear. Returns True if no obstacles are detected ahead, False if obstacles are present.",
+        "is_target_detected": "Condition: Check if target is within 20 units. Returns True if the target is within 20 units of distance, False otherwise.",
+        "is_target_reached": "Condition: Check if target is within 15 units. Returns True if the target is within 15 units of distance, False otherwise.",       
+        "task_completed": "Action: Signal task completion by freezing movement. Always returns True.",
+        "wander": "Action: Move randomly within the environment. Always returns True."
+      },
+      "to construct behavior tree in XML format to the following command": "if the available behaviors do not fit with the user command say (Sorry, I can't do the task)"
+    },
+    "OUTPUT": "<BehaviorTree> <Sequence> <Selector> <Sequence> <Condition>is_obstacle_detected</Condition> <Action>change_color_to_green</Action> </Sequence> <Action>avoid_obstacle</Action> </Selector> <Selector> <Sequence> <Condition>is_target_detected</Condition><Action>change_color_to_white</Action> <Action>task_completed</Action> </Sequence> <Action>wander</Action> </Selector> </Sequence> </BehaviorTree>"
+  },
+  {
+    "id": "seed_task_4",
+    "USER COMMAND": "generate behavior tree to 'Form a vertical line and then change color to green.'Output only the XML behavior tree without extra text.",
+    "INSTRUCTIONS": {
+      "Use only the following behaviors": {
+        "agent_movement_freeze": "Action: Freeze agent's movement. Always returns True.",
+        "avoid_obstacle": "Action: Avoid detected obstacles. Always returns True.",
+        "change_color_to_green": "Action: Change agent's color to green. Always returns True.",
+        "change_color_to_white": "Action: Change agent's color to white. Always returns True.",
+        "continue_movement_agent": "Action: Continue agent's movement. Always returns True.",
+        "form_line": "Action: Form a vertical line at the center. Always returns True.",
+        "is_agent_in_nest": "Condition: Check if the agent is in the nest. Returns True if the agent is in the nest, False otherwise.",
+        "is_line_formed": "Condition: Check if a vertical line is formed. Returns True if the line is formed with the center, False otherwise.",
+        "is_obstacle_detected": "Condition: Check for obstacles nearby. Returns True if an obstacle is detected, False otherwise.",
+        "is_path_clear": "Condition: Check if path ahead is clear. Returns True if no obstacles are detected ahead, False if obstacles are present.",
+        "is_target_detected": "Condition: Check if target is within 20 units. Returns True if the target is within 20 units of distance, False otherwise.",
+        "is_target_reached": "Condition: Check if target is within 15 units. Returns True if the target is within 15 units of distance, False otherwise.",       
+        "task_completed": "Action: Signal task completion by freezing movement. Always returns True."
+      },
+      "to construct behavior tree in XML format to the following command": "if the available behaviors do not fit with the user command say (Sorry, I can't do the task)"
+    },
+    "OUTPUT": "<BehaviorTree> <Sequence> <Selector> <Sequence> <Condition>is_line_formed</Condition> <Action>change_color_to_green</Action> <Action>agent_movement_freeze</Action> <Action>task_completed</Action> </Sequence> <Action>form_line</Action></Selector> </Sequence> </BehaviorTree>"
+  },
+  {
+    "id": "seed_task_5",
+    "USER COMMAND": "generate behavior tree to 'change color to green, Form a vertical line, and change color to white.'Output only the XML behavior tree without extra text.",
+    "INSTRUCTIONS": {
+      "Use only the following behaviors": {
+        "agent_movement_freeze": "Action: Freeze agent's movement. Always returns True.",
+        "avoid_obstacle": "Action: Avoid detected obstacles. Always returns True.",
+        "change_color_to_green": "Action: Change agent's color to green. Always returns True.",
+        "change_color_to_white": "Action: Change agent's color to white. Always returns True.",
+        "continue_movement_agent": "Action: Continue agent's movement. Always returns True.",
+        "form_line": "Action: Form a vertical line at the center. Always returns True.",
+        "is_agent_in_nest": "Condition: Check if the agent is in the nest. Returns True if the agent is in the nest, False otherwise.",
+        "is_line_formed": "Condition: Check if a vertical line is formed. Returns True if the line is formed with the center, False otherwise.",
+        "is_obstacle_detected": "Condition: Check for obstacles nearby. Returns True if an obstacle is detected, False otherwise.",
+        "is_path_clear": "Condition: Check if path ahead is clear. Returns True if no obstacles are detected ahead, False if obstacles are present.",
+        "is_target_detected": "Condition: Check if target is within 20 units. Returns True if the target is within 20 units of distance, False otherwise.",
+        "is_target_reached": "Condition: Check if target is within 15 units. Returns True if the target is within 15 units of distance, False otherwise.",       
+        "task_completed": "Action: Signal task completion by freezing movement. Always returns True.",
+        "wander": "Action: Move randomly within the environment. Always returns True."
+      },
+      "to construct behavior tree in XML format to the following command": "if the available behaviors do not fit with the user command say (Sorry, I can't do the task)"
+    },
+    "OUTPUT": "<BehaviorTree> <Selector> <Sequence> <Action>form_line</Action> <Sequence> <Condition>is_line_formed</Condition> <Action>change_color_to_white</Action> </Sequence> </Sequence> <Action>change_color_to_green</Action> </Selector> </BehaviorTree>"
+  },
+  {
+    "id": "seed_task_6",
+    "USER COMMAND": "generate behavior tree to 'Form a vertical line'Output only the XML behavior tree without extra text.",
+    "INSTRUCTIONS": {
+      "Use only the following behaviors": {
+        "agent_movement_freeze": "Action: Freeze agent's movement. Always returns True.",
+        "avoid_obstacle": "Action: Avoid detected obstacles. Always returns True.",
+        "change_color_to_green": "Action: Change agent's color to green. Always returns True.",
+        "change_color_to_white": "Action: Change agent's color to white. Always returns True.",
+        "continue_movement_agent": "Action: Continue agent's movement. Always returns True.",
+        "form_line": "Action: Form a vertical line at the center. Always returns True.",
+        "is_agent_in_nest": "Condition: Check if the agent is in the nest. Returns True if the agent is in the nest, False otherwise.",
+        "is_line_formed": "Condition: Check if a vertical line is formed. Returns True if the line is formed with the center, False otherwise.",
+        "is_obstacle_detected": "Condition: Check for obstacles nearby. Returns True if an obstacle is detected, False otherwise.",
+        "is_path_clear": "Condition: Check if path ahead is clear. Returns True if no obstacles are detected ahead, False if obstacles are present.",
+        "is_target_detected": "Condition: Check if target is within 20 units. Returns True if the target is within 20 units of distance, False otherwise.",
+        "is_target_reached": "Condition: Check if target is within 15 units. Returns True if the target is within 15 units of distance, False otherwise.",       
+        "task_completed": "Action: Signal task completion by freezing movement. Always returns True.",
+        "wander": "Action: Move randomly within the environment. Always returns True."
+      },
+      "to construct behavior tree in XML format to the following command": "if the available behaviors do not fit with the user command say (Sorry, I can't do the task)"
+    },
+    "OUTPUT": "<BehaviorTree> <Sequence> <Action>form_line</Action> </Sequence> </BehaviorTree>"
+  },
+  {
+    "id": "seed_task_7",
+    "USER COMMAND": "generate behavior tree to 'find mohammed then turn 90 degree' Output only the XML behavior tree without extra text.",
+    "INSTRUCTIONS": {
+      "Use only the following behaviors": {
+        "agent_movement_freeze": "Action: Freeze agent's movement. Always returns True.",
+        "avoid_obstacle": "Action: Avoid detected obstacles. Always returns True.",
+        "change_color_to_green": "Action: Change agent's color to green. Always returns True.",
+        "change_color_to_white": "Action: Change agent's color to white. Always returns True.",
+        "continue_movement_agent": "Action: Continue agent's movement. Always returns True.",
+        "form_line": "Action: Form a vertical line at the center. Always returns True.",
+        "is_agent_in_nest": "Condition: Check if the agent is in the nest. Returns True if the agent is in the nest, False otherwise.",
+        "is_line_formed": "Condition: Check if a vertical line is formed. Returns True if the line is formed with the center, False otherwise.",
+        "is_obstacle_detected": "Condition: Check for obstacles nearby. Returns True if an obstacle is detected, False otherwise.",
+        "is_path_clear": "Condition: Check if path ahead is clear. Returns True if no obstacles are detected ahead, False if obstacles are present.",
+        "is_target_detected": "Condition: Check if target is within 20 units. Returns True if the target is within 20 units of distance, False otherwise.",
+        "is_target_reached": "Condition: Check if target is within 15 units. Returns True if the target is within 15 units of distance, False otherwise.",       
+        "task_completed": "Action: Signal task completion by freezing movement. Always returns True.",
+        "wander": "Action: Move randomly within the environment. Always returns True."
+      },
+      "to construct behavior tree in XML format to the following command": "if the available behaviors do not fit with the user command say (Sorry, I can't do the task)"
+    },
+    "OUTPUT": "Sorry, I can't do the task with the provided behaviors."
+  },
+  {
+    "id": "seed_task_8",
+    "USER COMMAND": "generate behavior tree to 'Explore an unknown environment and map it' Output only the XML behavior tree without extra text.",
+    "INSTRUCTIONS": {
+      "Use only the following behaviors": {
+        "agent_movement_freeze": "Action: Freeze agent's movement. Always returns True.",
+        "avoid_obstacle": "Action: Avoid detected obstacles. Always returns True.",
+        "change_color_to_green": "Action: Change agent's color to green. Always returns True.",
+        "change_color_to_white": "Action: Change agent's color to white. Always returns True.",
+        "continue_movement_agent": "Action: Continue agent's movement. Always returns True.",
+        "form_line": "Action: Form a vertical line at the center. Always returns True.",
+        "is_agent_in_nest": "Condition: Check if the agent is in the nest. Returns True if the agent is in the nest, False otherwise.",
+        "is_line_formed": "Condition: Check if a vertical line is formed. Returns True if the line is formed with the center, False otherwise.",
+        "is_obstacle_detected": "Condition: Check for obstacles nearby. Returns True if an obstacle is detected, False otherwise.",
+        "is_path_clear": "Condition: Check if path ahead is clear. Returns True if no obstacles are detected ahead, False if obstacles are present.",
+        "is_target_detected": "Condition: Check if target is within 20 units. Returns True if the target is within 20 units of distance, False otherwise.",
+        "is_target_reached": "Condition: Check if target is within 15 units. Returns True if the target is within 15 units of distance, False otherwise.",       
+        "task_completed": "Action: Signal task completion by freezing movement. Always returns True.",
+        "wander": "Action: Move randomly within the environment. Always returns True.",
+        "move_forward": "Action: Move the robot one step forward in the current direction. Always returns True.",
+        "turn_left": "Action: Turn the robot 90 degrees to the left. Always returns True.",
+        "turn_right": "Action: Turn the robot 90 degrees to the right. Always returns True.",
+        "update_map": "Action: Update the robot's internal map of the environment based on its current location and sensor readings. Always returns True.",
+        "is_path_blocked": "Condition: Check if the path in the current direction is blocked or impassable. True if the path is blocked, False otherwise.",
+        "is_area_mapped": "Condition: Check if the current area has already been mapped and explored. Returns: True if the area is mapped, False otherwise."
+      },
+      "to construct behavior tree in XML format to the following command": "if the available behaviors do not fit with the user command say (Sorry, I can't do the task)"
+    },
+    "OUTPUT": "<BehaviorTree><Selector><Sequence><Condition>is_path_clear</Condition><Action>move_forward</Action><Action>update_map</Action></Sequence><Sequence><Condition>is_obstacle_detected</Condition><Action>avoid_obstacle</Action><Action>update_map</Action></Sequence><Sequence><Condition>is_path_blocked</Condition><Action>turn_left</Action></Sequence><Action>wander</Action></Selector></BehaviorTree>"
+  },
+  {
+    "id": "seed_task_9",
+    "USER COMMAND": "generate behavior tree to 'Monitor an area, when an intruder is detected, form a line and change color to red to alert other robots'. Output only the XML behavior tree without extra text.",
+    "INSTRUCTIONS": {
+    "Use only the following behaviors": {
+    "agent_movement_freeze": "Action: Freeze agent's movement. Always returns True.",
+    "avoid_obstacle": "Action: Avoid detected obstacles. Always returns True.",
+    "change_color_to_green": "Action: Change agent's color to green. Always returns True.",
+    "change_color_to_red": "Action: Change agent's color to red. Always returns True.",
+    "change_color_to_white": "Action: Change agent's color to white. Always returns True.",
+    "continue_movement_agent": "Action: Continue agent's movement. Always returns True.",
+    "form_line": "Action: Form a vertical line at the center. Always returns True.",
+    "is_agent_in_nest": "Condition: Check if the agent is in the nest. Returns True if the agent is in the nest, False otherwise.",
+    "is_line_formed": "Condition: Check if a vertical line is formed. Returns True if the line is formed with the center, False otherwise.",
+    "is_obstacle_detected": "Condition: Check for obstacles nearby. Returns True if an obstacle is detected, False otherwise.",
+    "is_path_clear": "Condition: Check if path ahead is clear. Returns True if no obstacles are detected ahead, False if obstacles are present.",
+    "is_target_detected": "Condition: Check if target is within 20 units. Returns True if the target is within 20 units of distance, False otherwise.",
+    "is_target_reached": "Condition: Check if target is within 15 units. Returns True if the target is within 15 units of distance, False otherwise.",
+    "is_intruder_detected": "Condition: Check if an intruder is detected in the monitored area. Returns True if an intruder is detected, False otherwise.",
+    "task_completed": "Action: Signal task completion by freezing movement. Always returns True.",
+    "wander": "Action: Move randomly within the environment. Always returns True."
+    },
+    "to construct behavior tree in XML format to the following command": "if the available behaviors do not fit with the user command say (Sorry, I can't do the task)"
+    },
+    "OUTPUT": "<BehaviorTree><Selector><Sequence><Condition>is_intruder_detected</Condition><Sequence><Action>form_line</Action><Action>change_color_to_red</Action></Sequence></Sequence><Action>wander</Action></Selector></BehaviorTree>"
+  },
+  {
+    "id": "seed_task_10",
+    "USER COMMAND": "generate behavior tree to 'Monitor an area, when an intruder is detected, form a line and change color to red to alert other robots'. Output only the XML behavior tree without extra text.",
+    "INSTRUCTIONS": {
+      "Use only the following behaviors": {
+      "avoid_obstacle": "Action: Avoid detected obstacles. Always returns True.",
+      "change_color_to_green": "Action: Change agent's color to green. Always returns True.",
+      "is_agent_in_nest": "Condition: Check if the agent is in the nest. Returns True if the agent is in the nest, False otherwise.",
+      "is_line_formed": "Condition: Check if a vertical line is formed. Returns True if the line is formed with the center, False otherwise.",
+      "is_obstacle_detected": "Condition: Check for obstacles nearby. Returns True if an obstacle is detected, False otherwise.",
+      "is_target_detected": "Condition: Check if target is within 20 units. Returns True if the target is within 20 units of distance, False otherwise.",
+      "task_completed": "Action: Signal task completion by freezing movement. Always returns True.",
+      "wander": "Action: Move randomly within the environment. Always returns True.",
+      "turn_left": "Action: Turn the robot 90 degrees to the left. Always returns True.",
+      "turn_right": "Action: Turn the robot 90 degrees to the right. Always returns True.",
+      "grab_target": "Action: Grab the target object if it is within reach. Always returns True.",
+      "drop_target": "Action: Drop the target object at the designated drop-off location. Always returns True.",
+      "is_target_grabbed": "Condition: Check if the target object has been grabbed. Returns True if the target is grabbed, False otherwise.",
+      "is_at_dropoff": "Condition: Check if the robot is at the designated drop-off location. Returns True if at the drop-off location, False otherwise."
+      },
+      "to construct behavior tree in XML format to the following command": "if the available behaviors do not fit with the user command say (Sorry, I can't do the task)"
+      },
+    "OUTPUT": "<BehaviorTree><Selector><Sequence><Condition>is_target_detected</Condition><Action>grab_target</Action><Sequence><Condition>is_at_dropoff</Condition><Action>drop_target</Action></Sequence></Sequence><Sequence><Condition>is_target_grabbed</Condition><Sequence><Condition>is_at_dropoff</Condition><Action>drop_target</Action></Sequence></Sequence><Sequence><Condition>is_obstacle_detected</Condition><Action>avoid_obstacle</Action></Sequence><Action>wander</Action></Selector></BehaviorTree>"
+  },
+  {
+    "id": "seed_task_11",
+    "USER COMMAND": "Generate a behavior tree for a swarm of robots to collectively transport a large object while navigating obstacles and maintaining formation.",
+    "INSTRUCTIONS": {
+      "Use only the following behaviors": {
+        "move_forward": "Action: Move one step forward while maintaining formation. Always returns True.",
+        "shift_left": "Action: Shift the entire formation one step to the left. Always returns True.",
+        "shift_right": "Action: Shift the entire formation one step to the right. Always returns True.",
+        "lift_object": "Action: Lift and grab onto the transportable object. Always returns True.",
+        "release_object": "Action: Release and put down the transportable object. Always returns True.",
+        "is_obstacle_ahead": "Condition: Check if there is an obstacle blocking the path ahead for the formation. Returns True if an obstacle is detected, False otherwise.",
+        "is_object_lifted": "Condition: Check if the transportable object is currently being lifted and carried. Returns True if the object is being carried, False otherwise.",
+        "is_formation_broken": "Condition: Check if the formation has become misaligned or broken. Returns True if the formation is broken, False otherwise."
+      },
+      "to construct behavior tree in XML format to the following command": "if the available behaviors do not fit with the user command say (Sorry, I can't do the task)"
+    },
+    "OUTPUT": "<BehaviorTree><Selector><Sequence><Condition>is_object_lifted</Condition><Selector><Sequence><Condition>is_obstacle_ahead</Condition><Action>shift_right</Action></Sequence><Action>move_forward</Action></Selector></Sequence><Sequence><Condition>is_formation_broken</Condition><Action>reform_formation</Action></Sequence><Sequence><Condition>is_object_detected</Condition><Action>lift_object</Action></Sequence></Selector></BehaviorTree>"
+  }  
+]

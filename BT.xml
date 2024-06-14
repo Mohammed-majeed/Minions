@@ -1,0 +1,71 @@
+<Sequence>
+    <Selector>
+        <Sequence>
+            <Condition>looking_for_target</Condition>
+            <Sequence>
+                <Condition>path_clear</Condition>
+                <Action>target_detected</Action>
+            </Sequence>
+            <!-- If path to target is not clear, avoid obstacles -->
+            <Sequence>
+                <Condition>obstacle_detected</Condition>
+                <Action>avoid_obstacle</Action>
+            </Sequence>
+        </Sequence>
+        <!-- If no target is detected, explore -->
+        <Action>explore</Action>
+    </Selector>
+    <!-- Once the target is found, return to the nest -->
+    <Selector>
+        <Sequence>
+            <Condition>target_reached</Condition>
+            <Selector>
+                <!-- Check if path to nest is clear -->
+                <Sequence>
+                    <Condition>looking_for_nest</Condition>
+                    <Action>return_to_nest</Action>
+                </Sequence>
+                <!-- If path to nest is not clear, avoid obstacles -->
+                <Sequence>
+                    <Condition>obstacle_detected</Condition>
+                    <Action>avoid_obstacle</Action>
+                </Sequence>
+            </Selector>
+        </Sequence>
+        <!-- If target not yet reached, continue current behavior (handled in the first Selector) -->
+        <Action>wander</Action>
+    </Selector>
+</Sequence>
+
+
+
+<!-- <?xml version='1.0' encoding='utf-8'?>
+<Sequence>
+    <Selector>
+        <Sequence>
+            <Condition>obstacle_detected</Condition>
+            <Action>avoid_obstacle</Action>
+        </Sequence>
+        <Action>form_line</Action>
+    </Selector>
+</Sequence> -->
+
+
+<!-- prompt = "Find food and change color to green, then return to the nest, change color to white, and freeze movement." -->
+<!-- <Sequence>
+    <Selector>
+        <Sequence>
+            <Condition>is_target_detected</Condition>
+            <Action>change_color_to_green</Action>
+            <Action>task_completed</Action>
+        </Sequence>
+        <Action>wander</Action>
+    </Selector>
+    <Sequence>
+        <Condition>is_agent_in_nest</Condition>
+        <Sequence>
+            <Action>change_color_to_white</Action>
+            <Action>agent_movement_freeze</Action>
+        </Sequence>
+    </Sequence>
+</Sequence> -->
