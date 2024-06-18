@@ -1,0 +1,97 @@
+
+
+
+    
+    <BehaviorTree>
+        <Selector>
+          <Sequence>
+          <Condition>is_target_detected</Condition>
+          <Action>change_color_to_green</Action>
+          </Sequence>
+          <Sequence>
+          <Condition>is_agent_in_nest</Condition>
+          <Action>change_color_to_white</Action>
+          </Sequence>
+        </Selector>
+    </BehaviorTree>
+
+
+#######
+
+
+    
+    <BehaviorTree>
+        <Selector>
+          <Sequence>
+          <Condition>is_target_detected</Condition>
+          <Action>change_color_to_green</Action>
+          </Sequence>
+          <Sequence>
+          <Condition>is_agent_in_nest</Condition>
+          <Action>change_color_to_white</Action>
+          <Action>agent_movement_freeze</Action>
+          </Sequence>
+        </Selector>
+    </BehaviorTree>
+
+
+#######
+
+
+    
+    <BehaviorTree>
+        <Selector>
+          <Sequence>
+          <Condition>is_obstacle_detected</Condition>
+          <Action>change_color_to_green</Action>
+          <Action>wander</Action>
+          </Sequence>
+          <Sequence>
+          <Condition>is_target_detected</Condition>
+          <Action>change_color_to_white</Action>
+          </Sequence>
+        </Selector>
+    </BehaviorTree>
+
+
+#######
+
+    
+    <BehaviorTree>
+        <Sequence>
+          <Action>form_line</Action>
+          <Condition>is_line_formed</Condition>
+          <Action>change_color_to_green</Action>
+          <Action>agent_movement_freeze</Action>
+          <Action>task_completed</Action>
+        </Sequence>
+    </BehaviorTree>
+
+
+#######
+
+
+
+    
+    <BehaviorTree>
+        <Sequence>
+        <Action>change_color_to_green</Action>
+        <Action>form_line</Action>
+        <Condition>is_line_formed</Condition>
+        <Action>change_color_to_white</Action>
+    </Sequence>
+</BehaviorTree>
+
+
+#######
+
+
+
+    <BehaviorTree>
+        <Sequence>
+          <Action>form_line</Action>
+          <Condition>is_line_formed</Condition>
+        </Sequence>
+    </BehaviorTree>
+
+

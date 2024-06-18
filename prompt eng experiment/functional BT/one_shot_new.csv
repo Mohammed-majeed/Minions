@@ -1,4 +1,4 @@
-Prompt,Error Count,Behavior Tree,Model Name
+Prompt,Error Count,Behavior Tree,Model Name,syntactic_correct,success
 "Find the target and change color to green, then return home and change color to white.",0,"<BehaviorTree>
             <Sequence>
                 <Selector condition=""is_target_detected()"">
@@ -14,7 +14,7 @@ Prompt,Error Count,Behavior Tree,Model Name
                     </Sequence> 
                 </Selector>            
             </Sequence>
-         </BehaviorTree>",orca-2-7b
+         </BehaviorTree>",orca-2-7b,False,False
 "Find food and change color to green, then return to the nest, change color to white, and freeze movement.",0,"<BehaviorTree>
             <Sequence>
                 <Selector condition=""is_target_detected()"">
@@ -33,7 +33,7 @@ Prompt,Error Count,Behavior Tree,Model Name
                     </Selector>
                 </Selector>
             </Sequence>
-         </BehaviorTree>",orca-2-7b
+         </BehaviorTree>",orca-2-7b,False,False
 "Detect an obstacle, change color to green, try to find the goal, then change color to white.",0,"<BehaviorTree>
             <Sequence>
                 <Selector>
@@ -50,7 +50,7 @@ Prompt,Error Count,Behavior Tree,Model Name
                         <Action>change_color_to_white</Action>
                     </Selector>
             </Sequence>
-         </BehaviorTree>",orca-2-7b
+         </BehaviorTree>",orca-2-7b,False,False
 Form a line and then change color to green.,0,"<BehaviorTree>
             <Sequence>
                 <Selector condition=""is_target_detected()"">
@@ -64,7 +64,7 @@ Form a line and then change color to green.,0,"<BehaviorTree>
                     </Sequence>
                 </Selector>
             </Sequence>
-         </BehaviorTree>",orca-2-7b
+         </BehaviorTree>",orca-2-7b,False,False
 "change color to green, Form a line, and change color to white.",0,"<BehaviorTree>
             <Sequence>
                 <Selector condition=""is_target_detected()"">
@@ -75,7 +75,7 @@ Form a line and then change color to green.,0,"<BehaviorTree>
                     <Action change_color_to_white() />
                 </Selector>
             </Sequence>
-         </BehaviorTree>",orca-2-7b
+         </BehaviorTree>",orca-2-7b,False,False
 form vertical line,0,"<BehaviorTree>
             <Sequence>
                 <Selector condition=""is_target_detected()"">
@@ -83,7 +83,7 @@ form vertical line,0,"<BehaviorTree>
                     <Condition is_path_clear(true) ><Condition is_agent_in_nest(false)> form_line() </Condition></Condition> 
                 </Selector>
             </Sequence>
-         </BehaviorTree>",orca-2-7b
+         </BehaviorTree>",orca-2-7b,False,False
 "Find the target and change color to green, then return home and change color to white.",0,"<BehaviorTree>
             <Sequence>
                 <Selector>
@@ -99,7 +99,7 @@ form vertical line,0,"<BehaviorTree>
                     <Action>change_color_to_white</Action>
                 </Sequence>
             </Sequence>
-        </BehaviorTree>",westlake-7b-v2
+        </BehaviorTree>",westlake-7b-v2,True,Tree
 "Find food and change color to green, then return to the nest, change color to white, and freeze movement.",0,"<BehaviorTree>
            <Sequence>
              <Selector>
@@ -116,7 +116,7 @@ form vertical line,0,"<BehaviorTree>
                <Action>agent_movement_freeze</Action>
              </Sequence>
            </Sequence>
-         </BehaviorTree>",westlake-7b-v2
+         </BehaviorTree>",westlake-7b-v2,True,Tree
 "Detect an obstacle, change color to green, try to find the goal, then change color to white.",0,"<BehaviorTree>
             <Sequence>
                 <Selector>
@@ -142,7 +142,7 @@ form vertical line,0,"<BehaviorTree>
                     </Selector>
                 </Sequence>
             </Sequence>
-        </BehaviorTree>",westlake-7b-v2
+        </BehaviorTree>",westlake-7b-v2,True,False
 Form a line and then change color to green.,0,"<BehaviorTree>
            <Sequence>
              <Action>form_line</Action>
@@ -151,93 +151,20 @@ Form a line and then change color to green.,0,"<BehaviorTree>
                <Action>wander</Action>
              </Selector>
            </Sequence>
-        </BehaviorTree>",westlake-7b-v2
+        </BehaviorTree>",westlake-7b-v2,True,False
 "change color to green, Form a line, and change color to white.",0,"<BehaviorTree>
            <Sequence>
              <Action>change_color_to_green</Action>
              <Action>form_line</Action>
              <Action>change_color_to_white</Action>
            </Sequence>
-        </BehaviorTree>",westlake-7b-v2
+        </BehaviorTree>",westlake-7b-v2,True,False
 form vertical line,0,"<BehaviorTree>
            <Sequence>
              <Action>form_line</Action>
              <Condition>is_line_formed</Condition>
            </Sequence>
-         </BehaviorTree>",westlake-7b-v2
-"Find the target and change color to green, then return home and change color to white.",0,"<BehaviorTree>
-            <Sequence>
-                <Selector name=""Find_Target"">
-                    <Condition>is_target_detected</Condition>
-                    <Action>change_color_to_green</Action>
-                    <Action>task_completed</Action>
-                </Selector>
-                <Sequence name=""Wander_and_Avoid"">
-                    <Action>wander</Action>
-                    <Condition>is_obstacle_detected</Condition>
-                        <Sequence>
-                            <Action>avoid_obstacle</Action>
-                        </Sequence>
-                </Sequence>
-            </Sequence>
-            <Selector name=""Return_Home"">
-                <Condition>is_agent_in_nest</Condition>
-                    <Action>change_color_to_white</Action>
-                    <TaskCompletion>task_completed</TaskCompletion>
-            </Selector>
-        </BehaviorTree>",mistral-7b-instruct-v0
-"Find food and change color to green, then return to the nest, change color to white, and freeze movement.",0,"<BehaviorTree>
-            <Sequence>
-                <Selector>
-                    <Sequence>
-                        <Action>is_target_detected</Action>
-                        <Action>change_color_to_green</Action>
-                        <Action>task_completed</Action>
-                    </Sequence>
-                    <Condition>is_agent_in_nest</Condition>
-                    <Action>change_color_to_white</Action>
-                </Selector>
-                <Action>freeze_movement_agent</Action>
-            </Sequence>
-        </BehaviorTree>",mistral-7b-instruct-v0
-"Detect an obstacle, change color to green, try to find the goal, then change color to white.",0,"<BehaviorTree>
-            <Sequence>
-                <Condition>is_obstacle_detected</Condition>
-                <Action>change_color_to_green</Action>
-                 <Selector name=""Find Goal"">
-                    <Sequence>
-                        <Condition>is_target_reached</Condition>
-                        <Action>task_completed</Action>
-                    </Sequence>
-                    <Sequence>
-                        <Condition>is_path_clear</Condition>
-                        <Action>continue_movement_agent</Action>
-                    </Sequence>
-                </Selector>
-                <Action name=""Change Color to White"">
-                    <Sequence>
-                        <Condition>is_target_reached</Condition>
-                        <Action>change_color_to_white</Action>
-                    </Sequence>
-                </Action>
-            </Sequence>
-         </BehaviorTree>",mistral-7b-instruct-v0
-Form a line and then change color to green.,0,"<BehaviorTree>
-            <Sequence>
-                <Action>form_line</Action>
-                <Action>change_color_to_green</Action>
-            </Sequence>
-        </BehaviorTree>",mistral-7b-instruct-v0
-"change color to green, Form a line, and change color to white.",0,"<BehaviorTree>
-            <Sequence>
-                <Action>change_color_to_green</Action>
-                <Action>form_line</Action>
-                <Action>change_color_to_white</Action>
-            </Sequence>
-        </BehaviorTree>",mistral-7b-instruct-v0
-form vertical line,0,"<BehaviorTree>
-            <Action>form_line</Action>
-         </BehaviorTree>",mistral-7b-instruct-v0
+         </BehaviorTree>",westlake-7b-v2,True,True
 "Find the target and change color to green, then return home and change color to white.",0,"<BehaviorTree>
             <Sequence>
                 <Selector>
@@ -250,7 +177,7 @@ form vertical line,0,"<BehaviorTree>
                     <Action>change_color_to_white</Action>
                 </Selector>
             </Sequence>
-        </BehaviorTree>",llama-2-7b-32k-instruct
+        </BehaviorTree>",llama-2-7b-32k-instruct,True,False
 "Find food and change color to green, then return to the nest, change color to white, and freeze movement.",0,"<BehaviorTree>
             <Sequence>
                 <Selector>
@@ -263,7 +190,7 @@ form vertical line,0,"<BehaviorTree>
                     <Action>change_color_to_white</Action>
                 </Selector>
             </Sequence>
-        </BehaviorTree>",llama-2-7b-32k-instruct
+        </BehaviorTree>",llama-2-7b-32k-instruct,True,False
 "Detect an obstacle, change color to green, try to find the goal, then change color to white.",0,"<BehaviorTree>
             <Sequence>
                 <Selector>
@@ -277,7 +204,7 @@ form vertical line,0,"<BehaviorTree>
                     <Action>change_color_to_white</Action>
                 </Selector>
             </Sequence>
-        </BehaviorTree>",llama-2-7b-32k-instruct
+        </BehaviorTree>",llama-2-7b-32k-instruct,True,False
 Form a line and then change color to green.,0,"<BehaviorTree>
             <Sequence>
                 <Selector>
@@ -289,7 +216,7 @@ Form a line and then change color to green.,0,"<BehaviorTree>
                     <Action>change_color_to_green</Action>
                 </Selector>
             </Sequence>
-        </BehaviorTree>",llama-2-7b-32k-instruct
+        </BehaviorTree>",llama-2-7b-32k-instruct,True,False
 "change color to green, Form a line, and change color to white.",0,"<BehaviorTree>
             <Sequence>
                 <Selector>
@@ -302,7 +229,7 @@ Form a line and then change color to green.,0,"<BehaviorTree>
                     <Action>change_color_to_white</Action>
                 </Selector>
             </Sequence>
-        </BehaviorTree>",llama-2-7b-32k-instruct
+        </BehaviorTree>",llama-2-7b-32k-instruct,True,False
 form vertical line,0,"<BehaviorTree>
             <Sequence>
                 <Selector>
@@ -313,7 +240,7 @@ form vertical line,0,"<BehaviorTree>
                     <Action wander</Action>
                 </Selector>
             </Sequence>
-         </BehaviorTree>",llama-2-7b-32k-instruct
+         </BehaviorTree>",llama-2-7b-32k-instruct,False,False
 "Find the target and change color to green, then return home and change color to white.",0,"<BehaviorTree>
             <Sequence>
                 <Selector>
@@ -330,7 +257,7 @@ form vertical line,0,"<BehaviorTree>
                 <Condition is_path_clear/>
                 <Action wander/>
             </Sequence>
-        </BehaviorTree>",llama-2-7b-chat
+        </BehaviorTree>",llama-2-7b-chat,False,False
 "Find food and change color to green, then return to the nest, change color to white, and freeze movement.",0,"<BehaviorTree>
             <Sequence>
                 <Selector>
@@ -353,7 +280,7 @@ form vertical line,0,"<BehaviorTree>
 
                 <Action wander/>
 
-        </BehaviorTree>",llama-2-7b-chat
+        </BehaviorTree>",llama-2-7b-chat,False,False
 "Detect an obstacle, change color to green, try to find the goal, then change color to white.",0,"<BehaviorTree>
             <Sequence>
                 <Selector>
@@ -370,7 +297,7 @@ form vertical line,0,"<BehaviorTree>
                     <Action>wander</Action>
                 </Sequence>
             </Sequence>
-         </BehaviorTree>",llama-2-7b-chat
+         </BehaviorTree>",llama-2-7b-chat,False,False
 Form a line and then change color to green.,0,"<BehaviorTree>
             <Sequence>
                 <Selector>
@@ -379,7 +306,7 @@ Form a line and then change color to green.,0,"<BehaviorTree>
                         <Action>change_color_to_green</Action>
                 </Selector>
             </Sequence>
-         </BehaviorTree>",llama-2-7b-chat
+         </BehaviorTree>",llama-2-7b-chat,False,False
 "change color to green, Form a line, and change color to white.",0,"<BehaviorTree>
             <Sequence>
                 <Selector>
@@ -397,7 +324,7 @@ Form a line and then change color to green.,0,"<BehaviorTree>
 
             </Sequence>
 
-         </BehaviorTree>",llama-2-7b-chat
+         </BehaviorTree>",llama-2-7b-chat,False,False
 form vertical line,0,"<BehaviorTree>
             <Sequence>
                 <Selector>
@@ -407,7 +334,7 @@ form vertical line,0,"<BehaviorTree>
                     <Action continue_movement_agent=""True"">True</Action>
             </Sequence>
 
-         </BehaviorTree>",llama-2-7b-chat
+         </BehaviorTree>",llama-2-7b-chat,False,False
 "Find the target and change color to green, then return home and change color to white.",4,"<BehaviorTree>
             <Sequence>
                 <Selector>
@@ -425,7 +352,7 @@ form vertical line,0,"<BehaviorTree>
             <Condition>is_target_reached</Condition>
          <Action>task_completed</Action>
       </Sequence>    
-      </BehaviorTree>",phi-2
+      </BehaviorTree>",phi-2,False,False
 "Find food and change color to green, then return to the nest, change color to white, and freeze movement.",4,"<BehaviorTree>
             <Sequence>
                 <Selector>
@@ -455,7 +382,7 @@ form vertical line,0,"<BehaviorTree>
                      <Action>wander</Action>
                 </Selector> 
             </Sequence>
-        </BehaviorTree>",phi-2
+        </BehaviorTree>",phi-2,False,False
 "Detect an obstacle, change color to green, try to find the goal, then change color to white.",4,"<BehaviorTree>
             <Sequence>
                 <Selector>
@@ -469,7 +396,7 @@ form vertical line,0,"<BehaviorTree>
                 </Selector>    
             </Sequence> 
          </Sequence>
-      </BehaviorTree>",phi-2
+      </BehaviorTree>",phi-2,False,False
 Form a line and then change color to green.,4,"<BehaviorTree>
             <Sequence>
                 <Selector>
@@ -478,7 +405,7 @@ Form a line and then change color to green.,4,"<BehaviorTree>
                         <Action>change_color_to_green</Action>
                    </Selector> 
             </Sequence>
-        </BehaviorTree>",phi-2
+        </BehaviorTree>",phi-2,False,False
 "change color to green, Form a line, and change color to white.",4,"<BehaviorTree>
             <Sequence>
                 <Selector>
@@ -493,8 +420,8 @@ Form a line and then change color to green.,4,"<BehaviorTree>
                <Action>change_color_to_white</Action>
             </Selector>  
          </Sequence> 
-      </BehaviorTree>",phi-2
-form vertical line,4,Could not generate proper XML.,phi-2
+      </BehaviorTree>",phi-2,False,False
+form vertical line,4,Could not generate proper XML.,phi-2,False,False
 "Find the target and change color to green, then return home and change color to white.",4,"<BehaviorTree>
             <Sequence>
                <Condition node=""is_target_detected"">
@@ -504,7 +431,7 @@ form vertical line,4,Could not generate proper XML.,phi-2
                   <Action node=""return_home""/>
                </Condition>
             </Sequence>
-         </BehaviorTree>",llama-2-13b
+         </BehaviorTree>",llama-2-13b,False,False
 "Find food and change color to green, then return to the nest, change color to white, and freeze movement.",4,"<BehaviorTree>
             <Sequence>
                <Condition node=""is_target_reached"">
@@ -520,7 +447,7 @@ form vertical line,4,Could not generate proper XML.,phi-2
                   </Condition>
                </Selector>
             </Sequence>
-         </BehaviorTree>",llama-2-13b
+         </BehaviorTree>",llama-2-13b,False,False
 "Detect an obstacle, change color to green, try to find the goal, then change color to white.",4,"<BehaviorTree>
             <Sequence>
                <Condition node=""is_obstacle_detected"">
@@ -530,7 +457,7 @@ form vertical line,4,Could not generate proper XML.,phi-2
                   <Action node=""task_completed""/>
                </Condition>
             </Sequence>
-         </BehaviorTree>",llama-2-13b
+         </BehaviorTree>",llama-2-13b,False,False
 Form a line and then change color to green.,4,"<BehaviorTree>
             <Sequence>
                <Condition node=""is_target_reached"">
@@ -545,7 +472,7 @@ Form a line and then change color to green.,4,"<BehaviorTree>
                   </Condition>
                </Selector>
             </Sequence>
-         </BehaviorTree>",llama-2-13b
+         </BehaviorTree>",llama-2-13b,False,False
 "change color to green, Form a line, and change color to white.",4,"<BehaviorTree>
             <Sequence>
                <Action node=""change_color_to_green""/>
@@ -554,7 +481,7 @@ Form a line and then change color to green.,4,"<BehaviorTree>
                <Condition node=""is_target_reached"" />
                <Action node=""task_completed""/>
             </Sequence>
-         </BehaviorTree>",llama-2-13b
+         </BehaviorTree>",llama-2-13b,False,False
 form vertical line,4,"<BehaviorTree>
             <Sequence>
                <Condition node=""is_target_reached"">
@@ -566,13 +493,13 @@ form vertical line,4,"<BehaviorTree>
                   <Action node=""continue_movement_agent""/>
                </Selector>
             </Sequence>
-         </BehaviorTree>",llama-2-13b
-"Find the target and change color to green, then return home and change color to white.",4,Could not generate proper XML.,llama-2-13b-chat
-"Find food and change color to green, then return to the nest, change color to white, and freeze movement.",4,Could not generate proper XML.,llama-2-13b-chat
-"Detect an obstacle, change color to green, try to find the goal, then change color to white.",4,Could not generate proper XML.,llama-2-13b-chat
-Form a line and then change color to green.,4,Could not generate proper XML.,llama-2-13b-chat
-"change color to green, Form a line, and change color to white.",4,Could not generate proper XML.,llama-2-13b-chat
-form vertical line,4,Could not generate proper XML.,llama-2-13b-chat
+         </BehaviorTree>",llama-2-13b,False,False
+"Find the target and change color to green, then return home and change color to white.",4,Could not generate proper XML.,llama-2-13b-chat,False,False
+"Find food and change color to green, then return to the nest, change color to white, and freeze movement.",4,Could not generate proper XML.,llama-2-13b-chat,False,False
+"Detect an obstacle, change color to green, try to find the goal, then change color to white.",4,Could not generate proper XML.,llama-2-13b-chat,False,False
+Form a line and then change color to green.,4,Could not generate proper XML.,llama-2-13b-chat,False,False
+"change color to green, Form a line, and change color to white.",4,Could not generate proper XML.,llama-2-13b-chat,False,False
+form vertical line,4,Could not generate proper XML.,llama-2-13b-chat,False,False
 "Find the target and change color to green, then return home and change color to white.",0,"<BehaviorTree>
              <Sequence>
                  <Selector>
@@ -589,7 +516,7 @@ form vertical line,4,Could not generate proper XML.,llama-2-13b-chat
                  <Condition>is_agent_in_nest</Condition>
                  <Action>change_color_to_white</Action>
              </Sequence>
-         </BehaviorTree>",llama-3-8b-instruct
+         </BehaviorTree>",llama-3-8b-instruct,True,False
 "Find food and change color to green, then return to the nest, change color to white, and freeze movement.",0,"<BehaviorTree>
              <Sequence>
                  <Selector>
@@ -604,7 +531,7 @@ form vertical line,4,Could not generate proper XML.,llama-2-13b-chat
                      <Action>agent_movement_freeze</Action>
                  </Sequence>
              </Sequence>
-         </BehaviorTree>",llama-3-8b-instruct
+         </BehaviorTree>",llama-3-8b-instruct,True,False
 "Detect an obstacle, change color to green, try to find the goal, then change color to white.",0,"<BehaviorTree>
              <Sequence>
                  <Selector>
@@ -621,7 +548,7 @@ form vertical line,4,Could not generate proper XML.,llama-2-13b-chat
                  <Condition>is_agent_in_nest</Condition>
                  <Action>change_color_to_white</Action>
              </Sequence>
-         </BehaviorTree>",llama-3-8b-instruct
+         </BehaviorTree>",llama-3-8b-instruct,True,False
 Form a line and then change color to green.,0,"<BehaviorTree>
              <Sequence>
                  <Selector>
@@ -630,7 +557,7 @@ Form a line and then change color to green.,0,"<BehaviorTree>
                  </Selector>
                  <Action>change_color_to_green</Action>
              </Sequence>
-         </BehaviorTree>",llama-3-8b-instruct
+         </BehaviorTree>",llama-3-8b-instruct,True,False
 "change color to green, Form a line, and change color to white.",0,"<BehaviorTree>
              <Sequence>
                  <Action>change_color_to_green</Action>
@@ -640,12 +567,12 @@ Form a line and then change color to green.,0,"<BehaviorTree>
                  </Selector>
                  <Action>change_color_to_white</Action>
              </Sequence>
-         </BehaviorTree>",llama-3-8b-instruct
+         </BehaviorTree>",llama-3-8b-instruct,True,False
 form vertical line,0,"<BehaviorTree>
              <Sequence>
                  <Action>form_line</Action>
              </Sequence>
-         </BehaviorTree>",llama-3-8b-instruct
+         </BehaviorTree>",llama-3-8b-instruct,True,True
 "Find the target and change color to green, then return home and change color to white.",0,"<BehaviorTree>
             <Sequence>
                 <Selector>
@@ -661,7 +588,7 @@ form vertical line,0,"<BehaviorTree>
                     <Action>change_color_to_white</Action>
                 </Sequence>
             </Sequence>
-        </BehaviorTree>",golden_label
+        </BehaviorTree>",golden_label,True,True
 "Find food and change color to green, then return to the nest, change color to white, and freeze movement.",0,"<BehaviorTree>
             <Sequence>
                 <Selector>
@@ -678,7 +605,7 @@ form vertical line,0,"<BehaviorTree>
                     <Action>agent_movement_freeze</Action>
                 </Sequence>
             </Sequence>
-        </BehaviorTree>",golden_label
+        </BehaviorTree>",golden_label,True,True
 "Detect an obstacle, change color to green, try to find the goal, then change color to white.",0,"<BehaviorTree>
             <Sequence>
                 <Selector>
@@ -697,8 +624,8 @@ form vertical line,0,"<BehaviorTree>
                     <Action>wander</Action>
                 </Selector>
             </Sequence>
-        </BehaviorTree>",golden_label
-"Form a line and then change color to green.",0,"<BehaviorTree>
+        </BehaviorTree>",golden_label,True,True
+Form a line and then change color to green.,0,"<BehaviorTree>
             <Sequence>
                 <Selector>
                     <Sequence>
@@ -710,7 +637,7 @@ form vertical line,0,"<BehaviorTree>
                     <Action>form_line</Action>
                 </Selector>
             </Sequence>
-        </BehaviorTree>",golden_label
+        </BehaviorTree>",golden_label,True,True
 "change color to green, Form a line, and change color to white.",0,"<BehaviorTree>
             <Selector>    
                 <Sequence>
@@ -722,14 +649,12 @@ form vertical line,0,"<BehaviorTree>
                 </Sequence>
                 <Action>change_color_to_green</Action>
             </Selector>
-        </BehaviorTree>",golden_label
-
-"form vertical line",0,"<BehaviorTree>
+        </BehaviorTree>",golden_label,True,True
+form vertical line,0,"<BehaviorTree>
             <Sequence>
                 <Action>form_line</Action>   
             </Sequence>
-        </BehaviorTree>",golden_label
-
+        </BehaviorTree>",golden_label,True,True
 "Find the target and change color to green, then return home and change color to white.",4,"<BehaviorTree>
             <Sequence>
                 <Selector>
@@ -745,7 +670,7 @@ form vertical line,0,"<BehaviorTree>
                     <Action>change_color_to_white</Action>
                 </Sequence>
             </Sequence>
-        </BehaviorTree>",Mistral-7B-Instruct-v3
+        </BehaviorTree>",Mistral-7B-Instruct-v3,True,True
 "Find food and change color to green, then return to the nest, change color to white, and freeze movement.",4,"<BehaviorTree>
             <Sequence>
                 <Selector>
@@ -762,7 +687,7 @@ form vertical line,0,"<BehaviorTree>
                     <Action>agent_movement_freeze</Action>
                 </Sequence>
             </Sequence>
-        </BehaviorTree>",Mistral-7B-Instruct-v3
+        </BehaviorTree>",Mistral-7B-Instruct-v3,True,True
 "Detect an obstacle, change color to green, try to find the goal, then change color to white.",4,"<BehaviorTree>
             <Sequence>
                 <Condition>is_obstacle_detected</Condition>
@@ -776,20 +701,20 @@ form vertical line,0,"<BehaviorTree>
                 </Selector>
                 <Action>change_color_to_white</Action>
             </Sequence>
-         </BehaviorTree>",Mistral-7B-Instruct-v3
+         </BehaviorTree>",Mistral-7B-Instruct-v3,True,False
 Form a line and then change color to green.,4,"<BehaviorTree>
             <Sequence>
                 <Action>form_line</Action>
                 <Action>change_color_to_green</Action>
             </Sequence>
-        </BehaviorTree>",Mistral-7B-Instruct-v3
+        </BehaviorTree>",Mistral-7B-Instruct-v3,True,False
 "change color to green, Form a line, and change color to white.",4,"<BehaviorTree>
             <Sequence>
                 <Action>change_color_to_green</Action>
                 <Action>form_line</Action>
                 <Action>change_color_to_white</Action>
             </Sequence>
-        </BehaviorTree>",Mistral-7B-Instruct-v3
+        </BehaviorTree>",Mistral-7B-Instruct-v3,True,False
 form vertical line,4,"<BehaviorTree>
             <Sequence>
                 <Action>change_color_to_white</Action>
@@ -797,4 +722,77 @@ form vertical line,4,"<BehaviorTree>
                 <Condition>is_line_formed</Condition>
                 <TaskCompleted>task_completed</TaskCompleted>
             </Sequence>
-        </BehaviorTree>",Mistral-7B-Instruct-v3
+        </BehaviorTree>",Mistral-7B-Instruct-v3,False,False
+"Find the target and change color to green, then return home and change color to white.",0,"<BehaviorTree>
+            <Sequence>
+                <Selector name=""Find_Target"">
+                    <Condition>is_target_detected</Condition>
+                    <Action>change_color_to_green</Action>
+                    <Action>task_completed</Action>
+                </Selector>
+                <Sequence name=""Wander_and_Avoid"">
+                    <Action>wander</Action>
+                    <Condition>is_obstacle_detected</Condition>
+                        <Sequence>
+                            <Action>avoid_obstacle</Action>
+                        </Sequence>
+                </Sequence>
+            </Sequence>
+            <Selector name=""Return_Home"">
+                <Condition>is_agent_in_nest</Condition>
+                    <Action>change_color_to_white</Action>
+                    <TaskCompletion>task_completed</TaskCompletion>
+            </Selector>
+        </BehaviorTree>",mistral-7b-instruct-v2,False,False
+"Find food and change color to green, then return to the nest, change color to white, and freeze movement.",0,"<BehaviorTree>
+            <Sequence>
+                <Selector>
+                    <Sequence>
+                        <Action>is_target_detected</Action>
+                        <Action>change_color_to_green</Action>
+                        <Action>task_completed</Action>
+                    </Sequence>
+                    <Condition>is_agent_in_nest</Condition>
+                    <Action>change_color_to_white</Action>
+                </Selector>
+                <Action>freeze_movement_agent</Action>
+            </Sequence>
+        </BehaviorTree>",mistral-7b-instruct-v2,True,False
+"Detect an obstacle, change color to green, try to find the goal, then change color to white.",0,"<BehaviorTree>
+            <Sequence>
+                <Condition>is_obstacle_detected</Condition>
+                <Action>change_color_to_green</Action>
+                 <Selector name=""Find Goal"">
+                    <Sequence>
+                        <Condition>is_target_reached</Condition>
+                        <Action>task_completed</Action>
+                    </Sequence>
+                    <Sequence>
+                        <Condition>is_path_clear</Condition>
+                        <Action>continue_movement_agent</Action>
+                    </Sequence>
+                </Selector>
+                <Action name=""Change Color to White"">
+                    <Sequence>
+                        <Condition>is_target_reached</Condition>
+                        <Action>change_color_to_white</Action>
+                    </Sequence>
+                </Action>
+            </Sequence>
+         </BehaviorTree>",mistral-7b-instruct-v2,False,False
+Form a line and then change color to green.,0,"<BehaviorTree>
+            <Sequence>
+                <Action>form_line</Action>
+                <Action>change_color_to_green</Action>
+            </Sequence>
+        </BehaviorTree>",mistral-7b-instruct-v2,True,False
+"change color to green, Form a line, and change color to white.",0,"<BehaviorTree>
+            <Sequence>
+                <Action>change_color_to_green</Action>
+                <Action>form_line</Action>
+                <Action>change_color_to_white</Action>
+            </Sequence>
+        </BehaviorTree>",mistral-7b-instruct-v2,True,False
+form vertical line,0,"<BehaviorTree>
+            <Action>form_line</Action>
+         </BehaviorTree>",mistral-7b-instruct-v2,True,True

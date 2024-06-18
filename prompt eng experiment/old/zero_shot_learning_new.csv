@@ -11,8 +11,7 @@ Prompt,Error Count,Behavior Tree,Model Name
                   </is_target_detected>
                  <return_home on=""true"">
                      <subnodes>
-                         <change_color_to_white />
-                     </subnodes>
+                         <change_color_to_white />2                     </subnodes>
                   </return_home>
              </BehaviorTree>",orca-2-7b
 "Find food and change color to green, then return to the nest, change color to white, and freeze movement.",4,Could not generate proper XML.,orca-2-7b
@@ -26,71 +25,6 @@ form vertical line,4,Could not generate proper XML.,orca-2-7b
 Form a line and then change color to green.,4,Could not generate proper XML.,westlake-7b-v2
 "change color to green, Form a line, and change color to white.",4,Could not generate proper XML.,westlake-7b-v2
 form vertical line,4,Could not generate proper XML.,westlake-7b-v2
-"Find the target and change color to green, then return home and change color to white.",1,"<BehaviorTree>
-           <sequence name=""Root"">
-             <seq>
-               <condition ref=""is_target_detected""/>
-               <if>
-                 <then>
-                   <action name=""change_color_to_green""/>
-                   <seq>
-                     <condition ref=""is_agent_in_nest""/>
-                     <if>
-                       <then>
-                         <action name=""task_completed""/>
-                       </then>
-                       <else>
-                         <sequence name=""FindTargetAndReturnHome"">
-                           <seq>
-                             <condition ref=""is_target_reached""/>
-                             <if>
-                               <then>
-                                 <action name=""task_completed""/>
-                               </then>
-                               <else>
-                                 <sequence name=""MoveToTarget"">
-                                   <seq>
-                                     <condition ref=""is_path_clear""/>
-                                     <if>
-                                       <then>
-                                         <action name=""continue_movement_agent""/>
-                                       </then>
-                                       <else>
-                                         <sequence name=""AvoidObstacle"">
-                                           <seq>
-                                             <condition ref=""is_obstacle_detected""/>
-                                             <if>
-                                               <then>
-                                                 <action name=""avoid_obstacle""/>
-                                                 <sequence name=""MoveToTarget"">...</sequence> <!-- Recursive call to MoveToTarget if obstacle is not avoided -->
-                                               </then>
-                                             </if>
-                                           </seq>
-                                         </sequence>
-                                       </else>
-                                     </if>
-                                   </seq>
-                                 </sequence>
-                               </else>
-                             </if>
-                           </seq>
-                         </sequence>
-                       </else>
-                     </if>
-                   </seq>
-                 </then>
-                 <else>
-                   <action name=""wander""/>
-                 </else>
-               </if>
-             </seq>
-           </sequence>
-         </BehaviorTree>",mistral-7b-instruct-v0
-"Find food and change color to green, then return to the nest, change color to white, and freeze movement.",4,Could not generate proper XML.,mistral-7b-instruct-v0
-"Detect an obstacle, change color to green, try to find the goal, then change color to white.",4,Could not generate proper XML.,mistral-7b-instruct-v0
-Form a line and then change color to green.,4,Could not generate proper XML.,mistral-7b-instruct-v0
-"change color to green, Form a line, and change color to white.",4,Could not generate proper XML.,mistral-7b-instruct-v0
-form vertical line,4,Could not generate proper XML.,mistral-7b-instruct-v0
 "Find the target and change color to green, then return home and change color to white.",2,"<BehaviorTree>
     <Start>
         <Action name=""FindTarget"">
@@ -557,3 +491,68 @@ form vertical line,0,"<BehaviorTree>
 Form a line and then change color to green.,4,Could not generate proper XML.,Mistral-7B-Instruct-v3
 "change color to green, Form a line, and change color to white.",4,Could not generate proper XML.,Mistral-7B-Instruct-v3
 form vertical line,4,Could not generate proper XML.,Mistral-7B-Instruct-v3
+"Find the target and change color to green, then return home and change color to white.",1,"<BehaviorTree>
+           <sequence name=""Root"">
+             <seq>
+               <condition ref=""is_target_detected""/>
+               <if>
+                 <then>
+                   <action name=""change_color_to_green""/>
+                   <seq>
+                     <condition ref=""is_agent_in_nest""/>
+                     <if>
+                       <then>
+                         <action name=""task_completed""/>
+                       </then>
+                       <else>
+                         <sequence name=""FindTargetAndReturnHome"">
+                           <seq>
+                             <condition ref=""is_target_reached""/>
+                             <if>
+                               <then>
+                                 <action name=""task_completed""/>
+                               </then>
+                               <else>
+                                 <sequence name=""MoveToTarget"">
+                                   <seq>
+                                     <condition ref=""is_path_clear""/>
+                                     <if>
+                                       <then>
+                                         <action name=""continue_movement_agent""/>
+                                       </then>
+                                       <else>
+                                         <sequence name=""AvoidObstacle"">
+                                           <seq>
+                                             <condition ref=""is_obstacle_detected""/>
+                                             <if>
+                                               <then>
+                                                 <action name=""avoid_obstacle""/>
+                                                 <sequence name=""MoveToTarget"">...</sequence> <!-- Recursive call to MoveToTarget if obstacle is not avoided -->
+                                               </then>
+                                             </if>
+                                           </seq>
+                                         </sequence>
+                                       </else>
+                                     </if>
+                                   </seq>
+                                 </sequence>
+                               </else>
+                             </if>
+                           </seq>
+                         </sequence>
+                       </else>
+                     </if>
+                   </seq>
+                 </then>
+                 <else>
+                   <action name=""wander""/>
+                 </else>
+               </if>
+             </seq>
+           </sequence>
+         </BehaviorTree>",mistral-7b-instruct-v2
+"Find food and change color to green, then return to the nest, change color to white, and freeze movement.",4,Could not generate proper XML.,mistral-7b-instruct-v2
+"Detect an obstacle, change color to green, try to find the goal, then change color to white.",4,Could not generate proper XML.,mistral-7b-instruct-v2
+Form a line and then change color to green.,4,Could not generate proper XML.,mistral-7b-instruct-v2
+"change color to green, Form a line, and change color to white.",4,Could not generate proper XML.,mistral-7b-instruct-v2
+form vertical line,4,Could not generate proper XML.,mistral-7b-instruct-v2

@@ -1,0 +1,115 @@
+
+     <BehaviorTree>
+        <Sequence>
+          <Selector>
+          <Sequence>
+          <Condition>is_target_detected</Condition>
+          <Action>change_color_to_green</Action>
+          </Sequence>
+          <Sequence>
+          <Condition>is_agent_in_nest</Condition>
+          <Action>change_color_to_white</Action>
+          </Sequence>
+          </Selector>
+          </Sequence>
+        </BehaviorTree>
+
+
+#######
+
+
+
+
+     <BehaviorTree>
+        <Sequence>
+          <Selector>
+          <Sequence>
+          <Condition>is_target_detected</Condition>
+          <Action>change_color_to_green</Action>
+          </Sequence>
+          <Sequence>
+          <Condition>is_agent_in_nest</Condition>
+          <Action>change_color_to_white</Action>
+          </Sequence>
+          <Action>wander</Action>
+          </Selector>
+          <Action>agent_movement_freeze</Action>
+          </Sequence>
+        </BehaviorTree>
+
+
+#######
+
+
+
+     <BehaviorTree>
+        <Selector>
+          <Sequence>
+          <Condition>is_obstacle_detected</Condition>
+          <Action>change_color_to_green</Action>
+          </Sequence>
+          <Sequence>
+          <Condition>is_target_detected</Condition>
+          <Action>continue_movement_agent</Action>
+          <Action>is_target_reached</Action>
+          <Action>change_color_to_white</Action>
+          </Sequence>
+        </Selector>
+      </BehaviorTree>
+
+
+#######
+
+
+
+    
+     <BehaviorTree>
+        <Sequence>
+          <Selector>
+          <Sequence>
+          <Condition>is_line_formed</Condition>
+          <Action>change_color_to_green</Action>
+          </Sequence>
+          <Action>wander</Action>
+          </Selector>
+          <Action>agent_movement_freeze</Action>
+          </Sequence>
+        </BehaviorTree>
+
+
+#######
+
+
+
+     <BehaviorTree>
+        <Sequence>
+          <Selector>
+          <Sequence>
+          <Condition>is_line_formed</Condition>
+          <Action>change_color_to_white</Action>
+          </Sequence>
+          <Action>form_line</Action>
+          </Selector>
+          <Action>change_color_to_green</Action>
+          </Sequence>
+      </BehaviorTree>
+
+
+#######
+
+
+
+    
+     <BehaviorTree>
+        <Sequence>
+          <Selector>
+          <Sequence>
+          <Condition>is_line_formed</Condition>
+          <Action>form_line</Action>
+          </Sequence>
+          <Action>wander</Action>
+          </Selector>
+          </Sequence>
+      </BehaviorTree>
+
+

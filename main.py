@@ -6,8 +6,8 @@ from LLAMA_2 import main
 import math
 import gc
 import torch
-
-
+import time
+start_time = time.time()
 
 class SwarmAgent(Agent):
     def __init__(self, images, simulation, pos, nest_pos, target_pos):
@@ -62,7 +62,8 @@ class SwarmAgent(Agent):
         distance = math.dist(self.target_pos, self.pos)
         if distance <= 20:
             self.target_detected_flag = True        
-        if self.target_detected_flag:            
+        if self.target_detected_flag:
+                    
             return True
         return False
         
@@ -103,7 +104,9 @@ class SwarmAgent(Agent):
         Returns: True if the agent is in the nest, False otherwise.
         """
         distance = math.dist(self.nest_pos, self.pos)
-        if distance <= 17 and self.state == "completed":
+        # elapsed_time = time.time() - start_time
+        # if elapsed_time>2:
+        if distance <= 17 and (self.target_reached_flag==True or self.target_detected_flag == True) :
             # self.state = "completed"
             # # self.freeze_movement()
             self.state = "seeking"
@@ -197,11 +200,11 @@ def load_images(image_paths):
 
 if __name__ == '__main__':
 
-    gc.collect()
+    # gc.collect()
 
-    torch.cuda.empty_cache()
+    # torch.cuda.empty_cache()
 
-    xml_path = "behavior_tree.xml"
+    xml_path = "behavior_tree_test.xml"
     # prompt = input('What behavior would you like to generate: ')
     # main(prompt=prompt, file_name=xml_path)
 

@@ -1,0 +1,94 @@
+
+<BehaviorTree>
+      <Sequence>
+        <Condition>is_target_detected</Condition>
+        <Action>change_color_to_green</Action>
+      </Sequence>
+      <Sequence>
+        <Condition>is_agent_in_nest</Condition>
+        <Action>change_color_to_white</Action>
+      </Sequence>
+    </BehaviorTree>
+
+
+#######
+
+<BehaviorTree>
+      <Sequence>
+        <Selector>
+          <Sequence>
+            <Condition>is_target_detected</Condition>
+            <Action>change_color_to_green</Action>
+          </Sequence>
+          <Action>wander</Action>
+        </Selector>
+        <Sequence>
+          <Condition>is_agent_in_nest</Condition>
+          <Action>change_color_to_white</Action>
+          <Action>continue_movement_agent</Action>
+        </Sequence>
+      </Sequence>
+    </BehaviorTree>
+
+
+#######
+
+<BehaviorTree>
+<Sequence>
+<Selector>
+<Sequence>
+<Condition>is_obstacle_detected</Condition>
+<Action>change_color_to_green</Action>
+<Action>try_to_avoid_obstacle</Action>
+</Sequence>
+<Action>wander</Action>
+</Selector>
+<Sequence>
+<Condition>is_target_detected</Condition>
+<Action>continue_movement_agent</Action>
+<Action>change_color_to_white</Action>
+<Action>task_completed</Action>
+</Sequence>
+</Sequence>
+</BehaviorTree>
+
+
+#######
+
+
+ <BehaviorTree>
+      <Sequence>
+        <Action>form_line</Action>
+        <Action>change_color_to_green</Action>
+      </Sequence>
+    </BehaviorTree>
+
+
+#######
+
+
+ <BehaviorTree>
+        <Sequence>
+          <Selector>
+            <Sequence>
+              <Action>change_color_to_green</Action>
+              <Action>form_line</Action>
+              <Action>change_color_to_white</Action>
+              <Action>task_completed</Action>
+            </Sequence>
+          </Selector>
+        </Sequence>
+      </BehaviorTree>
+
+
+#######
+
+
+<BehaviorTree>
+<Sequence>
+<Action>form_line</Action>
+<Condition>is_line_formed</Condition>
+</Sequence>
+<Action>task_completed</Action>
+</BehaviorTree>
+

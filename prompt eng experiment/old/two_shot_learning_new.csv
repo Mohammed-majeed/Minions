@@ -141,109 +141,6 @@ form vertical line,0,"<BehaviorTree>
 "Find the target and change color to green, then return home and change color to white.",0,"<BehaviorTree>
             <Sequence>
                 <Selector>
-                    <Condition>is_target_detected</Condition>
-                    <Action>change_color_to_green</Action>
-                    <Action>task_completed</Action>
-                </Selector>
-                <Action name=""return_home"">
-                    <Sequence>
-                        <IsPathClear>is_path_clear</IsPathClear>
-                        <Action>avoid_obstacle</Action>
-                        <Condition>is_agent_in_nest</Condition>
-                        <Action>change_color_to_white</Action>
-                    </Sequence>
-                </Action>
-            </Sequence>
-         </BehaviorTree>",mistral-7b-instruct-v0
-"Find food and change color to green, then return to the nest, change color to white, and freeze movement.",0,"<BehaviorTree>
-            <Sequence>
-                <Selector>
-                    <Sequence>
-                        <Condition>is_target_detected</Condition>
-                        <Action>change_color_to_green</Action>
-                        <Action>task_completed</Action>
-                    </Sequence>
-                    <Action name=""find_food"">
-                        <Selector>
-                            <Sequence>
-                                <Condition>is_obstacle_detected</Condition>
-                                <Action>avoid_obstacle</Action>
-                            </Sequence>
-                            <Sequence>
-                                <Condition>not (is_path_clear)</Condition>
-                                <Action name=""wait"">
-                                    <Sequence>
-                                        <Action>agent_movement_freeze</Action>
-                                        <Action>task_completed</Action>
-                                    </Sequence>
-                                </Action>
-                            </Sequence>
-                            <Sequence>
-                                <Condition>is_target_detected</Condition>
-                                <Action name=""approach"">
-                                    <Sequence>
-                                        <Action>agent_movement_freeze</Action>
-                                        <Action>change_color_to_green</Action>
-                                        <Action>task_completed</Action>
-                                    </Sequence>
-                                </Action>
-                            </Sequence>
-                        </Selector>
-                    </Action>
-                    <Action name=""return_nest"">
-                        <Condition>is_agent_in_nest</Condition>
-                        <Action>change_color_to_white</Action>
-                        <Action>task_completed</Action>
-                        <Action>agent_movement_freeze</Action>
-                    </Action>
-                </Selector>
-            </Sequence>
-         </BehaviorTree>",mistral-7b-instruct-v0
-"Detect an obstacle, change color to green, try to find the goal, then change color to white.",0,"<BehaviorTree>
-            <Sequence>
-                <Selector>
-                    <Condition>is_obstacle_detected</Condition>
-                    <Action>change_color_to_green</Action>
-                    <Sequence>
-                        <Condition>is_path_clear</Condition>
-                        <Action>task_completed</Action>
-                    </Sequence>
-                </Selector>
-                <Action name=""search\_for\_goal"">
-                    <Selector>
-                        <Sequence>
-                            <Condition>is_target_detected</Condition>
-                            <Action>change_color_to_white</Action>
-                        </Sequence>
-                        <Action>wander</Action>
-                    </Selector>
-                </Action>
-            </Sequence>
-         </BehaviorTree>",mistral-7b-instruct-v0
-Form a line and then change color to green.,0,"<BehaviorTree>
-            <Sequence>
-                <Selector>
-                    <Action>form_line</Action>
-                    <Action>change_color_to_green</Action>
-                    <Action>task_completed</Action>
-                </Selector>
-            </Sequence>
-        </BehaviorTree>",mistral-7b-instruct-v0
-"change color to green, Form a line, and change color to white.",0,"<BehaviorTree>
-            <Sequence>
-                <Action>change_color_to_green</Action>
-                <Action>form_line</Action>
-                <Action>change_color_to_white</Action>
-            </Sequence>
-        </BehaviorTree>",mistral-7b-instruct-v0
-form vertical line,0,"<BehaviorTree>
-            <Sequence>
-                <Action>form_line</Action>
-            </Sequence>
-        </BehaviorTree>",mistral-7b-instruct-v0
-"Find the target and change color to green, then return home and change color to white.",0,"<BehaviorTree>
-            <Sequence>
-                <Selector>
                     <Sequence>
                         <Condition>is_target_detected</Condition>
                         <Action>change_color_to_green</Action>
@@ -715,3 +612,106 @@ form vertical line,4,"<BehaviorTree>
                 <Action>task_completed</Action>
             </Sequence>
         </BehaviorTree>",Mistral-7B-Instruct-v3
+"Find the target and change color to green, then return home and change color to white.",0,"<BehaviorTree>
+            <Sequence>
+                <Selector>
+                    <Condition>is_target_detected</Condition>
+                    <Action>change_color_to_green</Action>
+                    <Action>task_completed</Action>
+                </Selector>
+                <Action name=""return_home"">
+                    <Sequence>
+                        <IsPathClear>is_path_clear</IsPathClear>
+                        <Action>avoid_obstacle</Action>
+                        <Condition>is_agent_in_nest</Condition>
+                        <Action>change_color_to_white</Action>
+                    </Sequence>
+                </Action>
+            </Sequence>
+         </BehaviorTree>",mistral-7b-instruct-v2
+"Find food and change color to green, then return to the nest, change color to white, and freeze movement.",0,"<BehaviorTree>
+            <Sequence>
+                <Selector>
+                    <Sequence>
+                        <Condition>is_target_detected</Condition>
+                        <Action>change_color_to_green</Action>
+                        <Action>task_completed</Action>
+                    </Sequence>
+                    <Action name=""find_food"">
+                        <Selector>
+                            <Sequence>
+                                <Condition>is_obstacle_detected</Condition>
+                                <Action>avoid_obstacle</Action>
+                            </Sequence>
+                            <Sequence>
+                                <Condition>not (is_path_clear)</Condition>
+                                <Action name=""wait"">
+                                    <Sequence>
+                                        <Action>agent_movement_freeze</Action>
+                                        <Action>task_completed</Action>
+                                    </Sequence>
+                                </Action>
+                            </Sequence>
+                            <Sequence>
+                                <Condition>is_target_detected</Condition>
+                                <Action name=""approach"">
+                                    <Sequence>
+                                        <Action>agent_movement_freeze</Action>
+                                        <Action>change_color_to_green</Action>
+                                        <Action>task_completed</Action>
+                                    </Sequence>
+                                </Action>
+                            </Sequence>
+                        </Selector>
+                    </Action>
+                    <Action name=""return_nest"">
+                        <Condition>is_agent_in_nest</Condition>
+                        <Action>change_color_to_white</Action>
+                        <Action>task_completed</Action>
+                        <Action>agent_movement_freeze</Action>
+                    </Action>
+                </Selector>
+            </Sequence>
+         </BehaviorTree>",mistral-7b-instruct-v2
+"Detect an obstacle, change color to green, try to find the goal, then change color to white.",0,"<BehaviorTree>
+            <Sequence>
+                <Selector>
+                    <Condition>is_obstacle_detected</Condition>
+                    <Action>change_color_to_green</Action>
+                    <Sequence>
+                        <Condition>is_path_clear</Condition>
+                        <Action>task_completed</Action>
+                    </Sequence>
+                </Selector>
+                <Action name=""search\_for\_goal"">
+                    <Selector>
+                        <Sequence>
+                            <Condition>is_target_detected</Condition>
+                            <Action>change_color_to_white</Action>
+                        </Sequence>
+                        <Action>wander</Action>
+                    </Selector>
+                </Action>
+            </Sequence>
+         </BehaviorTree>",mistral-7b-instruct-v2
+Form a line and then change color to green.,0,"<BehaviorTree>
+            <Sequence>
+                <Selector>
+                    <Action>form_line</Action>
+                    <Action>change_color_to_green</Action>
+                    <Action>task_completed</Action>
+                </Selector>
+            </Sequence>
+        </BehaviorTree>",mistral-7b-instruct-v2
+"change color to green, Form a line, and change color to white.",0,"<BehaviorTree>
+            <Sequence>
+                <Action>change_color_to_green</Action>
+                <Action>form_line</Action>
+                <Action>change_color_to_white</Action>
+            </Sequence>
+        </BehaviorTree>",mistral-7b-instruct-v2
+form vertical line,0,"<BehaviorTree>
+            <Sequence>
+                <Action>form_line</Action>
+            </Sequence>
+        </BehaviorTree>",mistral-7b-instruct-v2

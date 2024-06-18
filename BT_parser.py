@@ -62,7 +62,8 @@ def parse_node(node):
         condition_name = node.text.strip()
         return ConditionNode(condition_name)
     elif node_type == "behaviortree":
-        pass
+        children = [parse_node(child) for child in node]
+        return SequenceNode(children)
     elif node_type == "action":
         action_name = node.text.strip()
         return ActionNode(action_name)
@@ -97,8 +98,8 @@ def print_nodes(node, indent=0):
     else:
         print(f"{indent_str}Unknown node type: {type(node).__name__}")
 
-if __name__=='__main__':
-    path= "BT.xml"
-    root_node = parse_behavior_tree(path)
-    print_nodes(root_node)
-    print("Behavior Tree:")
+# if __name__=='__main__':
+#     path= "BT.xml"
+#     root_node = parse_behavior_tree(path)
+#     print_nodes(root_node)
+#     print("Behavior Tree:")

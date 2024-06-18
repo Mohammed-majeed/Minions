@@ -1,9 +1,16 @@
-<?xml version='1.0' encoding='utf-8'?>
-<Selector>
-                <Sequence>
-                    <Action>form_line</Action>
-                    <Condition>target_detected</Condition>
-                    <Action>change_color</Action>
-                </Sequence>
+<BehaviorTree>
 
-            </Selector>
+
+            <Sequence>
+                <Selector>
+                    <Sequence>
+                        <Action>is_target_detected</Action>
+                        <Action>change_color_to_green</Action>
+                        <Action>task_completed</Action>
+                    </Sequence>
+                    <Condition>is_agent_in_nest</Condition>
+                    <Action>change_color_to_white</Action>
+                </Selector>
+                <Action>freeze_movement_agent</Action>
+            </Sequence>
+        </BehaviorTree>
